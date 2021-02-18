@@ -1,4 +1,4 @@
-const playerNameContainerClass = 'player-list__player-name';
+const playerNameContainerClasses = ['player-list__player-name', 'player-list__guess-name', 'user-grid__user-name'];
 
 /**
  * Cette observer va juste empêcher le site de remettre
@@ -23,33 +23,38 @@ const globalObserver = new MutationObserver((mutations) => {
 
         for (const node of mutation.addedNodes) {
             if (!node.tagName) continue;
-            if (node.classList.contains(playerNameContainerClass)) {
+            if (playerNameContainerClasses.some(playerNameContainerClass => node.classList.contains(playerNameContainerClass))) {
                 newlyAddedPlayerWrappers.push(node);
             } else if (node.firstElementChild) {
-                newlyAddedPlayerWrappers.push(...node.getElementsByClassName(playerNameContainerClass));
+                playerNameContainerClasses.forEach(playerNameContainerClass => newlyAddedPlayerWrappers.push(...node.getElementsByClassName(playerNameContainerClass)));
             }
         }
     });
     for (const playerNameWrapper of newlyAddedPlayerWrappers) {
-        const nameContainer = playerNameWrapper.getElementsByTagName('a').item(0);
+        let nameContainer = playerNameWrapper.getElementsByTagName('a').item(0);
         if (nameContainer) {
-            const sanitizedPlayerName = censorName(nameContainer.innerHTML);
-            nameContainer.innerHTML = sanitizedPlayerName;
-            // We need this observer because Geoguessr tries to concat it again after we update it
-            nameContainerObserver.observe(nameContainer, { childList: true });
+            censorWatchContent(nameContainer);
+        } else {
+            censorWatchContent(playerNameWrapper);
         }
     }  
-})
+});
 
 globalObserver.observe(document.body, {
     childList: true,
     subtree: true
 });
 
-
 /**
  * Utils
  */
+
+function censorWatchContent(container) {
+    const sanitizedPlayerName = censorName(container.innerHTML);
+    container.innerHTML = sanitizedPlayerName;
+    // We need this observer because Geoguessr tries to concat it again after we update it
+    nameContainerObserver.observe(container, { childList: true });
+}
 
 /**
  * Possible de mettre des pseudo entier en whitelist
