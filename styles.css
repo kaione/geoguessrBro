@@ -1,0 +1,3 @@
+.player-list__player-avatar {
+    filter: blur(5px) !important;
+}

@@ -1,0 +1,19 @@
+{
+    "manifest_version": 2,
+    "name": "GeoguessrBro",
+    "version": "1.0.0",
+    "description": "On sécurise les baux",
+    "content_scripts": [
+        {
+            "css": [
+                "styles.css"
+            ],
+            "js": [
+                "script.js"
+            ],
+            "matches": [
+                "https://www.geoguessr.com/battle-royale/*"
+            ]
+        }
+    ]
+}
