@@ -1,19 +1,19 @@
-chrome.storage.sync.get('enabledSettings', function(storedData) {
+chrome.storage.sync.get('settings', function(storedData) {
     const checkboxes = document.querySelectorAll("input[type=checkbox]");
-    if (storedData.enabledSettings?.length > 0) {
+    if (storedData.settings?.enabledFeatures?.length > 0) {
         checkboxes.forEach(checkbox => {
-            checkbox.checked = storedData.enabledSettings.indexOf(checkbox.value) !== -1;
+            checkbox.checked = storedData.settings.enabledFeatures.indexOf(checkbox.value) !== -1;
         });
     }
 
-    let enabledSettings = storedData.enabledSettings || [];
+    let settings = storedData.settings || { enabledFeatures: []};
     
     checkboxes.forEach(checkbox => {
         checkbox.addEventListener('change', () => {
-            enabledSettings = Array.from(checkboxes)
+            settings.enabledFeatures = Array.from(checkboxes)
                                 .filter(i => i.checked)
                                 .map(i => i.value);
-            chrome.storage.sync.set({ 'enabledSettings': enabledSettings });
+            chrome.storage.sync.set({ 'settings': settings });
         });
     });
 });

@@ -2,22 +2,27 @@
 body {
     width: 250px;
 }
+
 .config-elem-wrapper {
     width: 100%;
     display: flex;
     flex-direction: column;
 }
+
 .config-elem-wrapper .config-elem {
     width: 100%;
     display: flex;
     flex-direction: row;
-    justify-content: space-around;
+    justify-content: space-between;
+    margin-top: 5px;
 }
+
 .config-elem-wrapper .config-elem .config-elem-label {
     margin: auto 0;
 }
 
 /* Switch */
+
 .switch {
     background-color: #ddd;
     border-radius: 18px;
@@ -29,12 +34,14 @@ body {
     vertical-align: top;
     width: 40px;
 }
+
 .switch-input {
     left: 0;
     opacity: 0;
     position: absolute;
     top: 0;
 }
+
 .switch-label {
     background: #eceeef none repeat scroll 0 0;
     border-radius: inherit;
@@ -45,6 +52,7 @@ body {
     text-transform: uppercase;
     transition: all 0.15s ease-out 0s;
 }
+
 .switch-label::before, .switch-label::after {
     line-height: 1;
     margin-top: -0.5em;
@@ -52,9 +60,11 @@ body {
     top: 50%;
     transition: inherit;
 }
-.switch-input:checked ~ .switch-label {
+
+.switch-input:checked~.switch-label {
     background: #47a8d8 none repeat scroll 0 0;
 }
+
 .switch-handle {
     background-color: #fff;
     border-radius: 10px;
@@ -65,6 +75,7 @@ body {
     transition: left 0.15s ease-out 0s;
     width: 18px;
 }
+
 .switch-handle::before {
     background-color: #f9f9f9;
     border-radius: 6px;
@@ -76,6 +87,85 @@ body {
     top: 50%;
     width: 12px;
 }
-.switch-input:checked ~ .switch-handle {
+
+.switch-input:checked~.switch-handle {
     left: 24px;
 }
+
+/* Text input */
+
+/* :root {
+    --rad: .7rem;
+    --dur: .3s;
+    --color-dark: #2f2f2f;
+    --color-light: #fff;
+    --color-brand: #57bd84;
+    --font-fam: 'Lato', sans-serif;
+    --height: 2rem;
+    --btn-width: 2rem;
+    --bez: cubic-bezier(0, 0, 0.43, 1.49);
+}
+
+form {
+    position: relative;
+    width: 10rem;
+    background: var(--color-brand);
+    border-radius: var(--rad);
+}
+
+input, button {
+    height: var(--height);
+    font-family: var(--font-fam);
+    border: 0;
+    color: var(--color-dark);
+    font-size: 1rem;
+}
+
+input[type="search"] {
+    outline: 0;
+    width: 100%;
+    background: var(--color-light);
+    padding: 0 0.5rem;
+    border-radius: var(--rad);
+    transition: all var(--dur) var(--bez);
+    transition-property: width, border-radius;
+    z-index: 1;
+    position: relative;
+}
+
+input[type="search"]::-webkit-search-decoration,
+input[type="search"]::-webkit-search-cancel-button,
+input[type="search"]::-webkit-search-results-button,
+input[type="search"]::-webkit-search-results-decoration {
+  -webkit-appearance:none;
+}
+
+button {
+    display: none;
+    position: absolute;
+    top: 0;
+    right: 0;
+    width: var(--btn-width);
+    font-weight: bold;
+    background: var(--color-brand);
+    border-radius: 0 var(--rad) var(--rad) 0;
+}
+
+input:not(:placeholder-shown) {
+    border-radius: var(--rad) 0 0 var(--rad);
+    width: calc(100% - var(--btn-width));
+}
+
+input:not(:placeholder-shown)+button {
+    display: block;
+}
+
+label {
+    position: absolute;
+    clip: rect(1px, 1px, 1px, 1px);
+    padding: 0;
+    border: 0;
+    height: 1px;
+    width: 1px;
+    overflow: hidden;
+} */

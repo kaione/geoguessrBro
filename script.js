@@ -1,14 +1,5 @@
-chrome.storage.sync.get('enabledSettings', function(storedData) {
-    let settings = {
-        blurAvatars: false,
-        censorNames: false
-    };
-    if (storedData.enabledSettings?.length > 0) {
-        settings = {
-            blurAvatars: storedData.enabledSettings.indexOf('blur-profil-pic') !== -1,
-            censorNames: storedData.enabledSettings.indexOf('censor-name') !== -1
-        };
-    }
+chrome.storage.sync.get('settings', function(storedData) {
+    const settings = loadSettings(storedData)
 
     /**
      * Cette observer va juste empêcher le site de remettre le pseudo non-censuré
@@ -56,6 +47,21 @@ chrome.storage.sync.get('enabledSettings', function(storedData) {
     /**
      * Utils
      */
+
+     function loadSettings(data) {
+        let settings = {
+            blurAvatars: false,
+            censorNames: false
+        };
+        if (data.settings?.enabledFeatures?.length > 0) {
+            settings = {
+                blurAvatars: data.settings.enabledFeatures.indexOf('blur-profil-pic') !== -1,
+                censorNames: data.settings.enabledFeatures.indexOf('censor-name') !== -1
+            };
+        }
+
+        return settings;
+     }
 
      function searchForNewPlayerNames(node) {
         const playerNameContainerClasses = [
