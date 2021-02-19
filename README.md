@@ -8,4 +8,10 @@ Le GeoguessrBro a la solution
 - Applique un blur sur les photos de profils des joueurs dans la liste des users dans le lobby, dans le HUD du haut et dans la liste de droite
 - Censure le pseudo des utilisateurs aux mêmes endroits. Possibilité de whitelister des pseudos et/ou des préfixes de pseudo (JA par exemple... :) )
 
+## Installation
+
+Pour le moment, l'extension n'étant pas publiée sur le Chrome Web Store, il faut l'installer à la main.  
+[Cliquez ici pour savoir comment faire](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612)
+
+
 HF
