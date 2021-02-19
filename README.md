@@ -13,5 +13,10 @@ Le GeoguessrBro a la solution
 Pour le moment, l'extension n'étant pas publiée sur le Chrome Web Store, il faut l'installer à la main.  
 [Cliquez ici pour savoir comment faire](https://dev.to/ben/how-to-install-chrome-extensions-manually-from-github-1612)
 
+## Configuration
+
+Il est possible d'activer ou désactiver les fonctionnalités ci-dessus via la popup de configuration.  
+Il suffit de cliquer sur l'icône de l'extension (oui, le poulet), pour voir les options disponibles.
+
 
 HF
